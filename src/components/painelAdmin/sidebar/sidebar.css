@@ -1,0 +1,75 @@
+
+.menu-item-text{
+	margin-top: 7px;
+}
+.menu-item-link{
+	text-decoration: none;
+	color: white;
+}
+.menu-subitem-li{
+	padding-left: 35px;
+    display: -webkit-box;
+    width: auto;
+    height: 60px;
+    background-color: #173848;
+ 
+}
+
+.menu-subitem{
+	display: grid;
+	background-color: #173848;
+	
+}
+.menu-item-icon{
+	padding: 0px 20px 0px 33px;
+	font-size: 30px;
+	color: white;
+}
+#image-perfil-icon{
+	font-size: 100px;
+}
+.image-perfil{
+	background-color: #f0faefed;
+    width: 120px;
+    height: 120px;
+    border-radius: 108%;
+    margin: 30px auto 20px auto;
+
+}
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+.menu{
+	color:white;
+	font-family: 'Ubuntu', sans-serif;
+	display: inline-block;
+	float: left;
+	background-color: #00293d;
+	height: 100vh;
+	width: 300px;
+    -webkit-animation: animate-div 1s;
+}
+@-webkit-keyframes animate-div {
+        from { opacity: 0; margin-left: -300px;}
+        to { opacity: 1;margin: 0px;}
+    }
+
+.perfil{
+	background-color: #00293d;
+	width: 300px;
+	height: 230px;
+	text-align: center;
+}
+.menu-item{
+    display: inline-flex;
+    width: 300px;
+    height: 60px;
+	background-color: #00293d;
+	cursor: pointer;
+}
+.menu-subitem-li:hover{
+	
+	background-color:#01141d;
+}
+.menu-item:hover{
+	
+	background-color:#01141d;
+}

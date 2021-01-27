@@ -4,9 +4,11 @@ import { GoogleMap, withGoogleMap, Marker, withScriptjs } from 'react-google-map
 
 import GooglePlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import Geocode from 'react-geocode';
+import './MapContainer.css';
 Geocode.setApiKey("AIzaSyD9R0YBrvqleKqNK3n5Ej02HlLmpHXH3Fo")
 Geocode.setRegion("br")
 Geocode.setLanguage("pt");
+
 export class MapContainer extends Component {
 
   constructor(props) {
@@ -57,7 +59,7 @@ export class MapContainer extends Component {
             lat: this.state.mapPosition.lat,
             lng: this.state.mapPosition.lng
           }} />
-        <button onClick={() => alert("fdg" + this.state.mapPosition.lat)} >testeeeee</button>
+        <button onClick={() => alert("fdg" + this.state.mapPosition.lat)} >Salvar</button>
         <GooglePlacesAutocomplete
 
 
@@ -72,15 +74,16 @@ export class MapContainer extends Component {
             }
           }}
           onSelect={result => {
-
+            // console.log(Geocode.fromLatLng(-5.7293869 -35.2631464))
             Geocode.fromAddress(result.description).then(
               response => {
                 const { lat, lng } = response.results[0].geometry.location;
                 console.log(lat, lng);
+                console.log(response.results[0].address_components);
                 this.state.mapPosition.lat = lat;
                 this.state.mapPosition.lng = lng;
 
-                console.log("teste: " + this.state.mapPosition.lat)
+                console.log( result.place_id)
               },
               error => {
                 console.error(error);
@@ -88,15 +91,6 @@ export class MapContainer extends Component {
             );
 
           }}
-
-
-
-
-        // onPlaceSelected={(place) => {
-        //   console.log(place.geometry.location.lat() + "  " + place.geometry.location.lng());
-        //   this.state.mapPosition.lat = place.geometry.location.lat();
-        //   this.state.mapPosition.lng = place.geometry.location.lng();
-        // }}
         />
 
       </GoogleMap>
@@ -108,7 +102,7 @@ export class MapContainer extends Component {
         <MapWithAMarker
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9R0YBrvqleKqNK3n5Ej02HlLmpHXH3Fo&v=3.exp&libraries=geometry,drawing,places"
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `400px` }} />}
+          containerElement={<div className ="div-map"style={{ height: `400px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>

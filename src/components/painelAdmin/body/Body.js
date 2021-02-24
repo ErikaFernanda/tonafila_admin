@@ -4,8 +4,10 @@ import React, { Component } from 'react';
 // import CadastrarUsuario from '../../views/CadastrarUsuario.js';
 // import VerFilas from '../../views/VerFilas.js';
 
-import '/body.css';
+import './body.css';
 import { Switch, Route } from 'react-router-dom';
+import MapContainer from '../views/MapContainer';
+import CadastrarFuncionario from '../views/CadastrarFuncionario';
 // import VerUsuarios from '../../views/VerUsuarios.js';
 // import VerEmpresas from '../../views/VerEmpresas.js';
 // import CadastrarFilaPosicao from '../../views/CadastrarFilaPosicao.js';
@@ -20,7 +22,7 @@ export default class Body extends Component {
     usuarios: []
   }
   componentDidMount() {
-    Axios.get('http://localhost:8080/empresas/')
+    Axios.get('https://apitonafila.herokuapp.com/empresas')
       .then(res => {
         const usuarios = res.data;
         this.setState({ usuarios });
@@ -31,17 +33,17 @@ export default class Body extends Component {
       
       <div className="center">
         <div className="conteudo">
-        {/* <Switch>
-          <Route path="/admin/page1" component={CadastrarUsuario}></Route>
-          <Route path="/admin/page2" component={CadastrarEmpresa}></Route>
-          <Route path="/admin/page3" component={CadastrarFila}></Route>
+        <Switch>
+          <Route path="/admin/page1" component={CadastrarFuncionario}></Route>
+          <Route path="/admin/page2" component={MapContainer}></Route>
+          {/* <Route path="/admin/page3" component={CadastrarFila}></Route>
           <Route path="/admin/page4" component={VerUsuarios}></Route>
           <Route path="/admin/page5" component={VerEmpresas}></Route>
           <Route path="/admin/page6" component={VerFilas}></Route>
           <Route path="/admin/page7" component={CadastrarFilaPosicao}></Route>
           <Route path="/admin/page8" component={VerFilaPosicao}></Route>
-          <Route path="/admin/sair" component={Login}></Route>
-        </Switch> */}
+          <Route path="/admin/sair" component={Login}></Route> */}
+        </Switch>
         </div>
       </div>
 

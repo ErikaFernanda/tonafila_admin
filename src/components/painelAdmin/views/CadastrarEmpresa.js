@@ -9,7 +9,7 @@ export class CadastrarEmpresa extends Component {
   onRequest = async () => {
     try {
 
-      const res = await axios.post('http://localhost:8080/empresas/', { ...this.state });
+      const res = await axios.post('https://apitonafila.herokuapp.com/empresas/', { ...this.state });
       
       return res.data;
       
@@ -26,7 +26,7 @@ export class CadastrarEmpresa extends Component {
     return (
       <div className='v2'>
           <h1>Cadastrar Empresas</h1>
-        <form onSubmit={this.onRequest}>
+        <form onSubmit={this.onRequest} >
           <label>
             Nome:
           <input type="text" name="name" onChange={this.handleChange}/>

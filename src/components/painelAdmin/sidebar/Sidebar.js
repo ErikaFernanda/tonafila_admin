@@ -13,22 +13,22 @@ import { IoMdExit } from "react-icons/io";
 
 const Sidebar = () => {
 
-//   const { data } = useContext(ApiContext)
-//   const [redirect, setRedirect] = useState('')
+  //   const { data } = useContext(ApiContext)
+  //   const [redirect, setRedirect] = useState('')
 
-//   if (data.nome !== undefined) {
+  //   if (data.nome !== undefined) {
 
-//     localStorage.setItem('nome', data.nome);
-//     localStorage.setItem('empresa', data.empresa);
-//     localStorage.setItem('email', data.email);
-//     localStorage.setItem('idempresa', data.idempresa);
-//     localStorage.setItem('idadministrador', data.idadministrador);
-//     console.log(" teste " + localStorage.getItem("idempresa"))
-//   }
+  //     localStorage.setItem('nome', data.nome);
+  //     localStorage.setItem('empresa', data.empresa);
+  //     localStorage.setItem('email', data.email);
+  //     localStorage.setItem('idempresa', data.idempresa);
+  //     localStorage.setItem('idfuncionario', data.idfuncionario);
+  //     console.log(" teste " + localStorage.getItem("idempresa"))
+  //   }
 
-//   if(localStorage.getItem("nome")==null){
-//      return <Redirect to="/login" />
-//   }
+  //   if(localStorage.getItem("nome")==null){
+  //      return <Redirect to="/login" />
+  //   }
   function sair(e) {
     // e.preventDefault();
     // setRedirect({
@@ -38,10 +38,10 @@ const Sidebar = () => {
 
 
   }
-//   if (redirect.status === true) {
-//     localStorage.clear()
-//     return <Redirect to="/login" />
-//   }
+  //   if (redirect.status === true) {
+  //     localStorage.clear()
+  //     return <Redirect to="/login" />
+  //   }
   return (
 
 
@@ -66,20 +66,20 @@ const Sidebar = () => {
 
         {/* <div >{localStorage.getItem('nome')}</div>
         <div>{localStorage.getItem('email')}</div>
-        <div >{localStorage.getItem('empresa') + " - " + localStorage.getItem("idempresa")+" - "+localStorage.getItem("idadministrador")}</div> */}
+        <div >{localStorage.getItem('empresa') + " - " + localStorage.getItem("idempresa")+" - "+localStorage.getItem("idfuncionario")}</div> */}
       </div>
 
-      <div className="menu-item" ><BsFillPeopleFill className="menu-item-icon" /><p className="menu-item-text">Fila</p></div>
+      <div className="menu-item" ><BsFillPeopleFill className="menu-item-icon" /><p className="menu-item-text">Empresas</p></div>
 
 
       <div className="menu-subitem" id="menu-subitem-filas">
 
-        <a className="menu-item-link" href="/admin/page3" ><div className="menu-subitem-li" ><AiOutlinePlus className="menu-item-icon" /><p className="menu-item-text">Criar Fila</p></div></a>
-        <a className="menu-item-link" href="/admin/page6"><div className="menu-subitem-li" ><AiFillEye className="menu-item-icon" /><p className="menu-item-text">Ver Fila</p></div></a>
+        <a className="menu-item-link" href="/admin/page2" ><div className="menu-subitem-li" ><AiOutlinePlus className="menu-item-icon" /><p className="menu-item-text">Adicionar Empresa</p></div></a>
+        <a className="menu-item-link" href="/admin/page1"><div className="menu-subitem-li" ><AiFillEye className="menu-item-icon" /><p className="menu-item-text">Adicionar Funcionários</p></div></a>
       </div>
 
-      <a className="menu-item-link" href="/page5"><div className="menu-item"><AiOutlineLineChart className="menu-item-icon" /><p className="menu-item-text">Dashboard</p></div></a>
-      <a className="menu-item-link" href="/page6"><div className="menu-item"><AiFillTag className="menu-item-icon" /><p className="menu-item-text">Divulgação</p></div></a>
+      <a className="menu-item-link" href="/page5"><div className="menu-item"><AiOutlineLineChart className="menu-item-icon" /><p className="menu-item-text"></p></div></a>
+      <a className="menu-item-link" href="/page6"><div className="menu-item"><AiFillTag className="menu-item-icon" /><p className="menu-item-text"></p></div></a>
 
       <a className="menu-item-link" onClick={sair} href=""><div className="menu-item"><IoMdExit className="menu-item-icon" /><p className="menu-item-text">Sair</p></div></a>
 

@@ -1,9 +1,10 @@
 
 import './App.css';
-import CadastrarEmpresa from './components/CadastrarEmpresa';
-import  MapContainer  from './components/MapContainer';
+import Body from './components/painelAdmin/body/Body';
 import  Navbar  from './components/painelAdmin/navbar/Navbar';
 import  Sidebar  from './components/painelAdmin/sidebar/Sidebar';
+import MapContainer from './components/painelAdmin/views/MapContainer';
+import { BrowserRouter } from "react-router-dom";
 // import  MapContainer  from './components/MapContainer';
 
 
@@ -16,11 +17,11 @@ function App() {
         <Navbar />
         <div className="meio">
           <Sidebar />
-          {/* <BrowserRouter>
+          <BrowserRouter>
           
             <Body />
-          </BrowserRouter> */}
-          <MapContainer/>
+          </BrowserRouter>
+          {/* <MapContainer/> */}
         </div>
       </div>
 

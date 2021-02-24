@@ -8,7 +8,7 @@ export default class VerEmpresas extends Component {
     empresas: []
   }
   componentDidMount() {
-    axios.get('http://localhost:8080/empresas/')
+    axios.get('https://apitonafila.herokuapp.com/empresas/')
       .then(res => {
         const empresas = res.data;
         this.setState({ empresas });

@@ -14,13 +14,14 @@ export class MapContainer extends Component {
 
 
   state = {
-    
 
-     latitude: 18.486278764986732, 
-     longitude: 69.92786525735443 ,
+
+    latitude: 18.486278764986732,
+    longitude: 69.92786525735443,
     nome: "",
     codigoempresa: "",
-   
+    endereco: "",
+    urlimg: "",
   };
   onRequest = async () => {
     try {
@@ -47,7 +48,10 @@ export class MapContainer extends Component {
     console.log(this.state.position);
   }
 
-
+  handleChangeUrlImg = event => {
+    this.setState({ urlimg: event.target.value });
+  
+  }
 
   render() {
 
@@ -66,7 +70,7 @@ export class MapContainer extends Component {
             lat: this.state.latitude,
             lng: this.state.longitude,
           }} />
-        <button onClick={() => alert("fdg" + this.state.nome)} >Salvar</button>
+
         <GooglePlacesAutocomplete
 
 
@@ -83,15 +87,16 @@ export class MapContainer extends Component {
           onSelect={result => {
             Geocode.fromAddress(result.description).then(
               response => {
-              
-              
- 
-                
+
+
+
+
                 this.state.nome = result.structured_formatting.main_text;
                 this.state.latitude = response.results[0].geometry.location.lat;
-                this.state.longitude= response.results[0].geometry.location.lng;
-                this.state.codigoempresa= result.place_id;
-                console.log(this.state.latitude+"  "+this.state.longitude);
+                this.state.longitude = response.results[0].geometry.location.lng;
+                this.state.codigoempresa = result.place_id;
+                this.state.endereco = response.results[0].formatted_address;
+                console.log(this.state.latitude + "  " + this.state.longitude);
                 console.log("id :" + result.place_id)
                 console.log("nome :" + result.structured_formatting.main_text);
                 console.log("Endereço :" + response.results[0].formatted_address)
@@ -104,7 +109,9 @@ export class MapContainer extends Component {
           }}
         />
 
+
       </GoogleMap>
+
 
     ));
     return (
@@ -117,6 +124,11 @@ export class MapContainer extends Component {
             mapElement={<div style={{ height: `100%` }} />}
           />
           {/* <input type="submit" value="Finalizar " /> */}
+          <label>
+            url img:
+          <input type="text" name="urlimg" onChange={this.handleChangeUrlImg} />
+          </label>
+          <button onClick={() => alert("fdg" + this.state.nome)} >Salvar</button>
         </form>
       </div >
     );

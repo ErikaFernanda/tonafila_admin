@@ -24,9 +24,11 @@ export class MapContainer extends Component {
     urlimg: "",
   };
   onRequest = async () => {
+
     try {
       const res = await axios.post('https://apitonafila.herokuapp.com/empresas/save', { ...this.state });
-
+      console.log(res.data)
+      alert("tstes")
       return res.data;
 
     } catch (error) {
@@ -48,9 +50,9 @@ export class MapContainer extends Component {
     console.log(this.state.position);
   }
 
-  handleChangeUrlImg = event => {
-    this.setState({ urlimg: event.target.value });
-  
+  handleChange = event => {
+    this.state.urlimg = event.target.value;
+
   }
 
   render() {
@@ -124,12 +126,10 @@ export class MapContainer extends Component {
             mapElement={<div style={{ height: `100%` }} />}
           />
           {/* <input type="submit" value="Finalizar " /> */}
-          <label>
-            url img:
-          <input type="text" name="urlimg" onChange={this.handleChangeUrlImg} />
-          </label>
+
           <button onClick={() => alert("fdg" + this.state.nome)} >Salvar</button>
         </form>
+        <label>url img:<input type="text" name="urlimg" onChange={this.handleChange} /></label>
       </div >
     );
   }

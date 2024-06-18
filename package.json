@@ -4,26 +4,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.8",
-    "@testing-library/react": "^11.2.3",
-    "@testing-library/user-event": "^12.6.0",
-    "@types/google-map-react": "^2.1.0",
-    "axios": "^0.21.1",
-    "core-js": "^3.8.2",
-    "google-map-react": "^2.1.9",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/google-map-react": "^2.1.10",
+    "ajv": "^8.16.0",
+    "axios": "^1.7.2",
+    "core-js": "^3.37.1",
+    "google-map-react": "^2.2.1",
     "google-maps-react": "^2.0.6",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-geocode": "^0.2.2",
-    "react-google-autocomplete": "^1.2.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-geocode": "^0.2.3",
+    "react-google-autocomplete": "^2.7.3",
     "react-google-map": "^3.1.1",
     "react-google-maps": "^9.4.5",
-    "react-google-places-autocomplete": "^2.3.2",
-    "react-icons": "^4.1.0",
+    "react-google-places-autocomplete": "^4.0.1",
+    "react-icons": "^5.2.1",
     "react-places-autocomplete": "^7.3.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1",
-    "web-vitals": "^0.2.4"
+    "react-router-dom": "^6.23.1",
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^4.1.1"
   },
   "scripts": {
     "predeploy": "npm run build",
@@ -32,7 +33,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-    
   },
   "eslintConfig": {
     "extends": [
@@ -53,6 +53,14 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0"
+    "@babel/plugin-transform-class-properties": "^7.24.7",
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7.24.7",
+    "@babel/plugin-transform-numeric-separator": "^7.24.7",
+    "@babel/plugin-transform-optional-chaining": "^7.24.7",
+    "@babel/plugin-transform-private-methods": "^7.24.7",
+    "@eslint/config-array": "^0.16.0",
+    "@eslint/object-schema": "^2.1.4",
+    "gh-pages": "^6.1.1",
+    "rimraf": "^5.0.7"
   }
 }

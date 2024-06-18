@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { Navigate  } from 'react-router-dom';
+import api from '../../../service/api';
 export class CadastrarFuncionario extends Component {
 
     state = {
@@ -36,7 +37,7 @@ export class CadastrarFuncionario extends Component {
 
             // return res.data;
 
-            return <Redirect to='page1' />
+            return <Navigate  to='page1' />
         } catch (error) {
             console.log("erro", error);
         }

@@ -1,139 +1,69 @@
+import React, { useState, useCallback, useRef } from 'react';
+import { GoogleMap, LoadScript, StandaloneSearchBox } from '@react-google-maps/api';
 
-import { Component } from 'react';
-import { GoogleMap, withGoogleMap, Marker, withScriptjs } from 'react-google-maps';
+const libraries = ['places'];
 
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
-import Geocode from 'react-geocode';
-import './MapContainer.css';
-import axios from 'axios';
-Geocode.setApiKey("AIzaSyD9R0YBrvqleKqNK3n5Ej02HlLmpHXH3Fo")
-Geocode.setRegion("br")
-Geocode.setLanguage("pt");
+const mapContainerStyle = {
+  width: '100vw',
+  height: '100vh',
+};
 
-export class MapContainer extends Component {
+const center = {
+  lat: -3.745,
+  lng: -38.523,
+};
 
-
-  state = {
-
-
-    latitude: 18.486278764986732,
-    longitude: 69.92786525735443,
-    nome: "",
-    codigoempresa: "",
-    endereco: "",
-    urlimg: "",
+const MapContainer = () => {
+  const [searchBox, setSearchBox] = useState(null);
+  const [places, setPlaces] = useState([]);
+  const onLoad = ref => {
+    setSearchBox(ref);
   };
-  onRequest = async () => {
 
-    try {
-      const res = await axios.post('https://apitonafila.herokuapp.com/empresas/save', { ...this.state });
-      console.log(res.data)
-      alert("tstes")
-      return res.data;
+  const onPlacesChanged = () => {
+    const places = searchBox.getPlaces();
+    setPlaces(places);
+    console.log(places);
+  };
 
-    } catch (error) {
-      console.log("erro", error);
-    }
-  }
-
-  onMapClicked = this.onMapClicked.bind(this);
-
-
-  onMapClicked(props, map, e) {
-    let location = this.state.position;
-    location.lat = e.latLng.lat();
-    location.lng = e.latLng.lng();
-
-    this.setState({
-      position: location
-    })
-    console.log(this.state.position);
-  }
-
-  handleChange = event => {
-    this.state.urlimg = event.target.value;
-
-  }
-
-  render() {
-
-
-
-    const MapWithAMarker = withScriptjs(withGoogleMap(props =>
-
+  return (
+    <LoadScript
+      googleMapsApiKey="AIzaSyD9R0YBrvqleKqNK3n5Ej02HlLmpHXH3Fo"
+      libraries={libraries}
+    >
       <GoogleMap
-        defaultZoom={2}
-        defaultCenter={{ lat: this.state.latitude, lng: this.state.longitude }}
-
+        id="searchbox-example"
+        mapContainerStyle={mapContainerStyle}
+        zoom={10}
+        center={center}
       >
-        <Marker key="AIzaSyD9R0YBrvqleKqNK3n5Ej02HlLmpHXH3Fo"
-
-          position={{
-            lat: this.state.latitude,
-            lng: this.state.longitude,
-          }} />
-
-        <GooglePlacesAutocomplete
-
-
-          apiKey="AIzaSyD9R0YBrvqleKqNK3n5Ej02HlLmpHXH3Fo"
-          autocompletionRequest={{
-            bounds: [
-              { lat: 50, lng: 50 },
-              { lat: 100, lng: 100 }
-            ],
-            componentRestrictions: {
-              country: ['br'],
-            }
-          }}
-          onSelect={result => {
-            Geocode.fromAddress(result.description).then(
-              response => {
-
-
-
-
-                this.state.nome = result.structured_formatting.main_text;
-                this.state.latitude = response.results[0].geometry.location.lat;
-                this.state.longitude = response.results[0].geometry.location.lng;
-                this.state.codigoempresa = result.place_id;
-                this.state.endereco = response.results[0].formatted_address;
-                console.log(this.state.latitude + "  " + this.state.longitude);
-                console.log("id :" + result.place_id)
-                console.log("nome :" + result.structured_formatting.main_text);
-                console.log("Endereço :" + response.results[0].formatted_address)
-              },
-              error => {
-                console.error(error);
-              }
-            );
-
-          }}
-        />
-
-
-      </GoogleMap>
-
-
-    ));
-    return (
-      <div>
-        <form onSubmit={this.onRequest}>
-          <MapWithAMarker
-            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9R0YBrvqleKqNK3n5Ej02HlLmpHXH3Fo&v=3.exp&libraries=geometry,drawing,places"
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div className="div-map" style={{ height: `400px` }} />}
-            mapElement={<div style={{ height: `100%` }} />}
+        <StandaloneSearchBox
+          onLoad={onLoad}
+          onPlacesChanged={onPlacesChanged}
+        >
+          <input
+            type="text"
+            placeholder="Search for places"
+            style={{
+              boxSizing: `border-box`,
+              border: `1px solid transparent`,
+              width: `240px`,
+              height: `32px`,
+              padding: `0 12px`,
+              borderRadius: `3px`,
+              boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+              fontSize: `14px`,
+              outline: `none`,
+              textOverflow: `ellipses`,
+              position: "absolute",
+              left: "50%",
+              marginLeft: "-120px"
+            }}
           />
-          {/* <input type="submit" value="Finalizar " /> */}
-
-          <button onClick={() => alert("fdg" + this.state.nome)} >Salvar</button>
-        </form>
-        <label>url img:<input type="text" name="urlimg" onChange={this.handleChange} /></label>
-      </div >
-    );
-  }
-}
+        </StandaloneSearchBox>
+      </GoogleMap>
+    </LoadScript>
+  );
+};
 
 export default MapContainer;
-

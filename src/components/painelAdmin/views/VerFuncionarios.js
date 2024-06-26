@@ -5,8 +5,8 @@ const VerEmpresas = () => {
 
   return (
     <div className="App">
-      <h2>Listagem Empresas</h2>
-      <DynamicList apiRoute="company" />
+      <h2>Listagem Funcionarios</h2>
+      <DynamicList apiRoute="employee" />
     </div>
   );
 };

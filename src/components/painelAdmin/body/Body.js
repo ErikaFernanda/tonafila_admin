@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import React, { Component, useState, useEffect} from 'react';
+import React, { Component, useState, useEffect } from 'react';
 // import CadastrarFila from '../../views/CadastrarFila.js';
 // import CadastrarUsuario from '../../views/CadastrarUsuario.js';
 // import VerFilas from '../../views/VerFilas.js';
@@ -12,21 +12,27 @@ import CadastrarFuncionario from '../views/CadastrarFuncionario';
 // import VerEmpresas from '../../views/VerEmpresas.js';
 // import CadastrarFilaPosicao from '../../views/CadastrarFilaPosicao.js';
 // import VerFilaPosicao from '../../views/VerFilaPosicao.js';
-// import CadastrarEmpresa from '../../views/CadastrarEmpresa.js';
+
+import CadastrarEmpresa from '../views/CadastrarEmpresa';
 // import Login from '../../login/Login.js';
 import api from '../../../service/api';
+import MapContainer2 from '../views/MapContainer';
+import VerEmpresas from '../views/VerEmpresas';
+import VerFuncionarios from '../views/VerFuncionarios';
+import VerUsuarios from '../views/VerUsuarios';
+
 
 const Body = () => {
   useEffect(() => {
     api.get("/company", config)
-        .then((response) => {
-          // setEmpresas(response.data);
-          const usuarios = response.data;
-          this.setState({ usuarios });
-        })
-        .catch((error) => {
-          console.log("Whoops! Houve um erro.", error.message || error);
-        });
+      .then((response) => {
+        // setEmpresas(response.data);
+        const usuarios = response.data;
+        this.setState({ usuarios });
+      })
+      .catch((error) => {
+        console.log("Whoops! Houve um erro.", error.message || error);
+      });
   }, []);
 
   const config = {
@@ -40,15 +46,12 @@ const Body = () => {
     <div className="center">
       <div className="conteudo">
         <Routes >
-          <Route path="/admin/page1" component={CadastrarFuncionario}></Route>
-          <Route path="/admin/page2" component={MapContainer}></Route>
-          {/* <Route path="/admin/page3" component={CadastrarFila}></Route>
-        <Route path="/admin/page4" component={VerUsuarios}></Route>
-        <Route path="/admin/page5" component={VerEmpresas}></Route>
-        <Route path="/admin/page6" component={VerFilas}></Route>
-        <Route path="/admin/page7" component={CadastrarFilaPosicao}></Route>
-        <Route path="/admin/page8" component={VerFilaPosicao}></Route>
-        <Route path="/admin/sair" component={Login}></Route> */}
+          <Route path="/admin/page1" element={<CadastrarFuncionario />} />
+          <Route path="/admin/page2" element={<CadastrarEmpresa />} />
+          <Route path="/page3" element={<VerEmpresas/>} />
+          <Route path="/page5" element={<VerFuncionarios/>} />
+          <Route path="/page6" element={<VerUsuarios/>} />
+          {/* <Route path="/admin/sair" component={Login} /> */}
         </Routes >
       </div>
     </div>
